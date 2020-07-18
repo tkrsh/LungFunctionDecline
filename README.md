@@ -12,6 +12,5 @@ Current methods make fibrotic lung diseases difficult to treat, even with access
 ### EDA And Visualizations Of CT Scans 
 
 Ct Scan progression of a patient done weekly for about  1-2 years  
-<center>
+
 ![Patientx](files/1.gif)
-</center>
