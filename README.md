@@ -14,7 +14,6 @@ Current methods make fibrotic lung diseases difficult to treat, even with access
 Ct Scan progression of a patient done weekly for about  1-2 years  
 <p align="center">
 
-![Patient x](files/1.gif)<p align="center">
-
+<img src="https://imgur.com/BVYjceS">
 
 </p>
