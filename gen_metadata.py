@@ -3,6 +3,7 @@ from fastai2.medical.imaging  import *
 
 main_dir=Path("/home/tkrsh/osic-main/")
 
+
 files=[]
 
 for dirname, _, filenames in os.walk(main_dir):
