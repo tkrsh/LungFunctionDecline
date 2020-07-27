@@ -89,6 +89,7 @@ def mloss(_lambda):
 
 def get_compiled_model():
     model = tf.keras.Sequential([
+    tf.keras.layers.LSTM(10,return_sequences=False),
     tf.keras.layers.Dense(200, activation='relu'),
     tf.keras.layers.Dense(200, activation='relu'),
     tf.keras.layers.Dense(200, activation='relu'),
@@ -96,20 +97,20 @@ def get_compiled_model():
     tf.keras.layers.Dense(3, activation='relu'),
             ])
 
+
     model.compile(loss=mloss(0.5), optimizer="adam", metrics=[kloss])
     return model
-
 tf.keras.backend.clear_session()
 
 y_train=df.pop("FVC")
-
+ 
 dataset = tf.data.Dataset.from_tensor_slices((x_train.values, y_train.values))
 train_dataset=dataset.batch(9)
 model = get_compiled_model()
 tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir="/home/tkrsh/osic-git/", profile_batch=5)
 
-model.fit(train_dataset,epochs=200000,callbacks=[tensorboard_callback])
+model.fit(train_dataset,epochs=20000,callbacks=[tensorboard_callback])
 
- 
 model.save_weights("Model_Over_50k")
 model.save("OVERFITT")
+

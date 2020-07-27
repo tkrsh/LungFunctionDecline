@@ -11,7 +11,8 @@ import tensorflow.keras.backend as K
 import tensorflow.keras.layers as L
 from   tensorflow.keras import Sequential
 main_dir=("/home/tkrsh/osic-main/")
- 
+tf.keras.backend.clear_session()
+
 files=[]
 
 for dirname, _, filenames in os.walk(main_dir):
@@ -89,14 +90,14 @@ def mloss(_lambda):
 
 def get_compiled_model():
     model = tf.keras.Sequential([
-    tf.keras.layers.Dense(200, activation='relu'),
-    tf.keras.layers.Dense(200, activation='relu'),
-    tf.keras.layers.Dense(200, activation='relu'),
+    tf.keras.layers.Dense(100, activation='relu'),
+    tf.keras.layers.Dense(100, activation='relu'),
+    tf.keras.layers.Dense(100, activation='relu'),
     tf.keras.layers.Dense(50, activation='relu'),
     tf.keras.layers.Dense(3, activation='relu'),
             ])
 
-    model.compile(loss=mloss(0.5), optimizer="adam", metrics=[kloss])
+    model.compile(loss=mloss(0.8), optimizer=tf.keras.optimizers.Adam(lr=0.1, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.01, amsgrad=False), metrics=[score])
     return model
 
 tf.keras.backend.clear_session()
@@ -108,8 +109,5 @@ train_dataset=dataset.batch(9)
 model = get_compiled_model()
 tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir="/home/tkrsh/osic-git/", profile_batch=5)
 
-model.fit(train_dataset,epochs=200000,callbacks=[tensorboard_callback])
+model.fit(train_dataset,epochs=20000,callbacks=[tensorboard_callback])
 
- 
-model.save_weights("Model_Over_50k")
-model.save("OVERFITT")
