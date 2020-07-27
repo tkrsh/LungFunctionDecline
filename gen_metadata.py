@@ -22,3 +22,4 @@ dcm_metadata_test=pd.DataFrame.from_dicoms(test_images,px_summ=True)
 
 dcm_metadata_train.to_csv("dcm_metadata_train.csv")
 dcm_metadata_test.to_csv("dcm_metadata_test.csv")
+
